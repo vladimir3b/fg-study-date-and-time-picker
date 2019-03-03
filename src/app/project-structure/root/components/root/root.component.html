@@ -1,0 +1,71 @@
+<!-- /***
+ *    ██████╗  ██████╗  ██████╗ ████████╗
+ *    ██╔══██╗██╔═══██╗██╔═══██╗╚══██╔══╝
+ *    ██████╔╝██║   ██║██║   ██║   ██║
+ *    ██╔══██╗██║   ██║██║   ██║   ██║
+ *    ██║  ██║╚██████╔╝╚██████╔╝   ██║
+ *    ╚═╝  ╚═╝ ╚═════╝  ╚═════╝    ╚═╝
+ *
+ *     ██████╗ ██████╗ ███╗   ███╗██████╗  ██████╗ ███╗   ██╗███████╗███╗   ██╗████████╗
+ *    ██╔════╝██╔═══██╗████╗ ████║██╔══██╗██╔═══██╗████╗  ██║██╔════╝████╗  ██║╚══██╔══╝
+ *    ██║     ██║   ██║██╔████╔██║██████╔╝██║   ██║██╔██╗ ██║█████╗  ██╔██╗ ██║   ██║
+ *    ██║     ██║   ██║██║╚██╔╝██║██╔═══╝ ██║   ██║██║╚██╗██║██╔══╝  ██║╚██╗██║   ██║
+ *    ╚██████╗╚██████╔╝██║ ╚═╝ ██║██║     ╚██████╔╝██║ ╚████║███████╗██║ ╚████║   ██║
+ *     ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝      ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═══╝   ╚═╝
+ *
+ *    ████████╗███████╗███╗   ███╗██████╗ ██╗      █████╗ ████████╗███████╗
+ *    ╚══██╔══╝██╔════╝████╗ ████║██╔══██╗██║     ██╔══██╗╚══██╔══╝██╔════╝
+ *       ██║   █████╗  ██╔████╔██║██████╔╝██║     ███████║   ██║   █████╗
+ *       ██║   ██╔══╝  ██║╚██╔╝██║██╔═══╝ ██║     ██╔══██║   ██║   ██╔══╝
+ *       ██║   ███████╗██║ ╚═╝ ██║██║     ███████╗██║  ██║   ██║   ███████╗
+ *       ╚═╝   ╚══════╝╚═╝     ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝
+ *
+ */ -->
+
+<form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="2rem"
+    [formGroup]="testingForm">
+
+  <!-- NAME -->
+  <mat-form-field>
+    <input
+        matInput
+        placeholder="Username..."
+        formControlName="usernameInput"
+        type="text">
+  </mat-form-field>
+
+  <!-- DATE -->
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Departure date..."
+      formControlName="dateInput"
+      [matDatepicker]="dateInputPicker">
+    <mat-datepicker-toggle
+        matSuffix
+        [for]="dateInputPicker">
+    </mat-datepicker-toggle>
+    <mat-datepicker #dateInputPicker></mat-datepicker>
+    <mat-error *ngIf="true">
+      Departure date in required!
+    </mat-error>
+  </mat-form-field>
+
+  <!-- TIME -->
+  <kendo-timepicker
+      formControlName="timeInput"
+      placeholder="Departure time..."
+      [nowButton]="true"
+      format="HH:mm:ss"
+      [cancelButton]="false"
+      [popupSettings]="{animate: false}"
+      [formatPlaceholder]="{ hour: 'hh', minute: 'mm', second: 'ss' }">
+  </kendo-timepicker>
+
+
+  <button mat-raised-button color="primary">Submint</button>
+
+</form>
